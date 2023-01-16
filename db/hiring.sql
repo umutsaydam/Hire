@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 25 Ara 2022, 08:45:57
+-- Üretim Zamanı: 16 Oca 2023, 17:01:22
 -- Sunucu sürümü: 10.4.24-MariaDB
 -- PHP Sürümü: 8.1.6
 
@@ -33,6 +33,13 @@ CREATE TABLE `cv` (
   `cv_adresi` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `kullanicilar_kullanici_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `cv`
+--
+
+INSERT INTO `cv` (`cv_id`, `diller_dil_id`, `cv_adresi`, `kullanicilar_kullanici_id`) VALUES
+(9, 1, '20299088244_Ogrenci.pdf', 45);
 
 -- --------------------------------------------------------
 
@@ -68,6 +75,13 @@ CREATE TABLE `fotograflar` (
   `fotograf_adresi` varchar(250) COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
+--
+-- Tablo döküm verisi `fotograflar`
+--
+
+INSERT INTO `fotograflar` (`fotograf_id`, `kullanicilar_kullanici_id`, `fotograf_adresi`) VALUES
+(41, 45, 'myphoto.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +95,14 @@ CREATE TABLE `iletisim` (
   `iletisim_mail` varchar(70) COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
+--
+-- Tablo döküm verisi `iletisim`
+--
+
+INSERT INTO `iletisim` (`iletisim_id`, `kullanicilar_kullanici_id`, `iletisim_tel_no`, `iletisim_mail`) VALUES
+(30, 45, '05439250620', 'umutsaydam24@gmail.com'),
+(31, 46, '05466', 'dmt@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +113,13 @@ CREATE TABLE `insan_kaynagi` (
   `sirketler_sirket_id` int(11) NOT NULL,
   `insan_kaynagi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `insan_kaynagi`
+--
+
+INSERT INTO `insan_kaynagi` (`sirketler_sirket_id`, `insan_kaynagi_id`) VALUES
+(9, 46);
 
 -- --------------------------------------------------------
 
@@ -108,6 +137,14 @@ CREATE TABLE `kullanicilar` (
   `kullanici_sifre` varchar(20) COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
+--
+-- Tablo döküm verisi `kullanicilar`
+--
+
+INSERT INTO `kullanicilar` (`kullanici_id`, `kullanici_ad`, `kullanici_soyad`, `kullanici_tanitim`, `kullanici_teklif_acik`, `kullanici_email`, `kullanici_sifre`) VALUES
+(45, 'Umut', 'SAYDAM', 'deneme', 1, 'umutsaydam24@gmail.com', '123'),
+(46, 'Demet', 'Mutlu', 'Deneme', 0, 'dmt@gmail.com', '123');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +155,13 @@ CREATE TABLE `kullanici_meslek_detay` (
   `kullanicilar_kullanici_id` int(11) NOT NULL,
   `alanlar_alan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `kullanici_meslek_detay`
+--
+
+INSERT INTO `kullanici_meslek_detay` (`kullanicilar_kullanici_id`, `alanlar_alan_id`) VALUES
+(45, 9);
 
 -- --------------------------------------------------------
 
@@ -188,6 +232,13 @@ CREATE TABLE `sirketler` (
   `sirket_misyon` text COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
+--
+-- Tablo döküm verisi `sirketler`
+--
+
+INSERT INTO `sirketler` (`sirket_id`, `kullanicilar_kullanici_id`, `sirket_adi`, `sirket_vizyon`, `sirket_misyon`) VALUES
+(9, 46, 'Trenyol', 'Deneme', 'Deneme');
+
 -- --------------------------------------------------------
 
 --
@@ -211,6 +262,13 @@ CREATE TABLE `videolar` (
   `video_adresi` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `kullanicilar_kullanici_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `videolar`
+--
+
+INSERT INTO `videolar` (`video_id`, `video_zamani`, `video_adresi`, `kullanicilar_kullanici_id`) VALUES
+(9, '2023-01-16', 'WIN_20221226_09_35_47_Pro.mp4', 45);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -309,7 +367,7 @@ ALTER TABLE `videolar`
 -- Tablo için AUTO_INCREMENT değeri `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cv_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `diller`
@@ -321,19 +379,19 @@ ALTER TABLE `diller`
 -- Tablo için AUTO_INCREMENT değeri `fotograflar`
 --
 ALTER TABLE `fotograflar`
-  MODIFY `fotograf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `fotograf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `iletisim`
 --
 ALTER TABLE `iletisim`
-  MODIFY `iletisim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `iletisim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `kullanicilar`
 --
 ALTER TABLE `kullanicilar`
-  MODIFY `kullanici_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `kullanici_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `meslekler`
@@ -351,13 +409,13 @@ ALTER TABLE `meslek_alanlar`
 -- Tablo için AUTO_INCREMENT değeri `sirketler`
 --
 ALTER TABLE `sirketler`
-  MODIFY `sirket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `sirket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `videolar`
 --
 ALTER TABLE `videolar`
-  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `video_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
